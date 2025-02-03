@@ -19,3 +19,9 @@ CREATE TABLE `osoby` (
 composer install
 
 
+### Demo online
+https://digitalsky.pl/mentor/subscribers/index.php
+
+### FizzBuzz sample
+https://digitalsky.pl/mentor/subscribers/fizbuzz.php
+
