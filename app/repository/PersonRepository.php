@@ -1,5 +1,5 @@
 <?php
-namespace App\Repository;
+namespace app\repository;
 
 use App\Db\DatabaseAdapter;
 use InvalidArgumentException;

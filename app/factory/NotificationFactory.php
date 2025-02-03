@@ -1,5 +1,5 @@
 <?php
-namespace App\Factory;
+namespace app\factory;
 
 class NotificationFactory {
 

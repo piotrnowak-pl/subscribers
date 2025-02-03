@@ -1,14 +1,16 @@
 <?php
+
 session_start();
+
 require_once 'vendor/autoload.php';
 require_once 'app/helper/Global.php';
 
-use App\Db\DatabaseAdapter;
-use App\Factory\NotificationFactory;
-use App\Observer\NotificationObserver;
-use App\Repository\PersonRepository;
-use App\Repository\SubscriptionRepository;
-use App\App;
+use app\db\DatabaseAdapter;
+use app\factory\NotificationFactory;
+use app\observer\NotificationObserver;
+use app\repository\PersonRepository;
+use app\repository\SubscriptionRepository;
+use app\App;
 
 // Konfiguracja połączenia z bazą danych
 

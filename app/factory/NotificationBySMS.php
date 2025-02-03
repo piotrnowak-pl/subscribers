@@ -1,5 +1,5 @@
 <?php
-namespace App\Factory;
+namespace app\factory;
 
 class NotificationBySMS implements NotificationInterface {
     public function send($message) :bool {

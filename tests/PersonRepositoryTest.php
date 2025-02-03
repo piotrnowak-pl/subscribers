@@ -1,8 +1,8 @@
 <?php
-namespace App\Tests;
+namespace app\tests;
 
-use App\Db\DatabaseAdapter;
-use App\Repository\PersonRepository;
+use app\db\DatabaseAdapter;
+use app\repository\PersonRepository;
 use PHPUnit\Framework\TestCase;
 
 class PersonRepositoryTest extends TestCase {

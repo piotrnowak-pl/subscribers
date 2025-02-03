@@ -1,5 +1,5 @@
 <?php
-namespace App\Observer;
+namespace app\observer;
 
 
 // Klasa obserwatora powiadomień

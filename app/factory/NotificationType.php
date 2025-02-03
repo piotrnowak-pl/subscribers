@@ -1,5 +1,5 @@
 <?php
-namespace App\Factory;
+namespace app\factory;
 
 class NotificationType {
     const SMS = 'sms';

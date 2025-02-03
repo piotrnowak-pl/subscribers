@@ -1,5 +1,5 @@
 <?php
-namespace App\Db;
+namespace app\db;
 
 use PDO;
 use PDOException;

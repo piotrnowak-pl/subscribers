@@ -1,10 +1,10 @@
 <?php
-namespace App;
+namespace app;
 
-use App\Factory\NotificationFactory;
-use App\Observer\NotificationObserver;
-use App\Repository\PersonRepositoryInterface;
-use App\Repository\SubscriptionRepositoryInterface;
+use app\factory\NotificationFactory;
+use app\observer\NotificationObserver;
+use app\repository\PersonRepositoryInterface;
+use app\repository\SubscriptionRepositoryInterface;
 use InvalidArgumentException;
 
 

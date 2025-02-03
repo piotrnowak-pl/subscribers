@@ -1,5 +1,5 @@
 <?php
-namespace App\Repository;
+namespace app\repository;
 
 interface SubscriptionRepositoryInterface {
     public function getAll() : array;

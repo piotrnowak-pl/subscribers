@@ -1,9 +1,10 @@
 <?php
 namespace App\Tests;
 
-use App\Db\DatabaseAdapter;
-use App\Repository\PersonRepository;
+use app\db\DatabaseAdapter;
 use PHPUnit\Framework\TestCase;
+use app\repository\PersonRepository;
+use app\repository\SubscriptionRepository;
 
 class SubscriptionRepositoryTest extends TestCase {
     private $dbAdapter;
@@ -18,11 +19,14 @@ class SubscriptionRepositoryTest extends TestCase {
         $subscribers_data_file = 'data/test_subscriptions.data';
         $this->dbAdapter = new DatabaseAdapter($dbConfig);
         $this->personRepository = new PersonRepository($this->dbAdapter);
-        $this->subscriptionRepository = new \App\Repository\SubscriptionRepository($subscribers_data_file);
+        $this->subscriptionRepository = new SubscriptionRepository($subscribers_data_file);
 
         // Przygotowanie 
         $this->dbAdapter->query("DELETE FROM osoby");
-        unlink($subscribers_data_file);       
+        if(file_exists($subscribers_data_file)) {
+            unlink($subscribers_data_file);       
+        }
+        
 
     }
 

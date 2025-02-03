@@ -1,5 +1,5 @@
 <?php
-namespace App\Repository;
+namespace app\repository;
 
 class SubscriptionRepository implements SubscriptionRepositoryInterface {
     
@@ -14,26 +14,31 @@ class SubscriptionRepository implements SubscriptionRepositoryInterface {
 
     // Metoda konwertuje dane z pliku i  zwraca tablicę subskrypcji
     public function getAll():array {
+
+        $subscriptions = [];
+
         if (!file_exists($this->filePath)) {
-            return [];
+            return $subscriptions;
         }
         
         $data = explode(PHP_EOL, file_get_contents($this->filePath));
-        $subscriptions = [];
         foreach ($data as $key => $line) {
             if (empty($line)) {
-                unset($subscriptions[$key]);
                 continue;
             }
 
             if(strpos($line, ':') === false) {
                 throw new \Exception('Invalid subscription format');
             }
+            list($person_id,$type) = explode(':', $line);
 
-            $subscription = explode(':', $line);
-            $subscriptions[$subscription[0]] = $subscription[1];
+            if(empty($person_id) || empty($type)){
+                continue;
+            }
+
+            $subscriptions[$person_id] = $type;
         }
-        
+
         return $subscriptions;
     }
 
