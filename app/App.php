@@ -63,7 +63,9 @@ class App {
             } elseif ($action === 'edit' && $id) {
                 $this->personRepository->update($id, $imie, $nazwisko, $email, $telefon);
             } elseif ($action === 'delete' && $id) {
-                $this->personRepository->delete($id);
+                if($this->personRepository->delete($id)){
+                    $this->subscriptionRepository->delete($id);
+                }
             }
 
             // Usunięcie błędu i danych z formularza
@@ -141,10 +143,12 @@ class App {
     // Metoda sendNotifications() wysyła powiadomienia do wszystkich subskrybentów
     private function sendNotifications($message) {
         $subscriptions = $this->subscriptionRepository->getAll();
+
         foreach ($subscriptions as $person_id => $type) {
             $notification = $this->notificationFactory->create($person_id, $type);
             $this->notificationObserver->attach($notification);
         }
+        
         $sent = $this->notificationObserver->notify($message);
         if($sent === 0){
             $_SESSION['error']['message'] = 'Brak subskrypcji do powiadomień. Wybierz subskrypcje dla osób, do których chcesz wysłać powiadomienie.';
@@ -169,6 +173,7 @@ class App {
     private function renderView() {
         $people = $this->personRepository->getAll();
         $subscriptions = $this->subscriptionRepository->getAll();
+
         $notificationTypes = $this->notificationFactory->getTypes();
         include 'app/views/index.php';
         
